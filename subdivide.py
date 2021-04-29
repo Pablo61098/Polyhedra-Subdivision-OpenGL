@@ -3,7 +3,7 @@ def calculate_new_vector(v1, v2, n_v):
     try:
         normal = sum([x**2 for x in vector])**(1/2)
 
-        vector = [x/(normal) for x in vector]
+        # vector = [x/(normal) for x in vector]
 
         # print(vector)
         n_v += 1

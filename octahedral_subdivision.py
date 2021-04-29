@@ -3,7 +3,8 @@ from OpenGL.GL import  *
 import numpy as np
 from OpenGL.GL.shaders import compileProgram, compileShader
 import pyrr
-from update import update_figure
+from subdivide import update_figure
+from figures import define_figure
 
 vertex_src = """
 # version 330 core
@@ -73,7 +74,7 @@ def main():
     if not glfw.init():
         return
     # Create a windowed mode window and its OpenGL context
-    window = glfw.create_window(640, 480, "Hello World", None, None)
+    window = glfw.create_window(640, 640, "Hello World", None, None)
 
     if not window:
         glfw.terminate()
@@ -85,97 +86,9 @@ def main():
 
     # Make the window's context current
     glfw.make_context_current(window)
+
+    vertices_array, indices_array = define_figure("oc")
     
-
-    # vertices = [-0.5, -0.5, 0.0, 1.0, 0.0, 0.0,
-    #          0.5, -0.5, -1.0, 0.0, 1.0, 0.0,
-    #          -0.5,  0.5, -1.0, 0.0, 0.0, 1.0,
-    #          0.5, 0.5, 0.0, 1.0, 1.0, 1.0,
-    #          0.0, 0.75, 0.0, 1.0, 1.0, 0]
-
-    # indices = [0, 1, 2,
-    #            1, 2, 3,
-    #            2, 3, 4]
-
-    a = 0.525731112119133606
-    b = 0.850650808352039932
-    a = 0.1
-    # vertices = [-0.5, -0.5, 0.5, 1.0, 0.0, 0.0,
-    #          0.5, -0.5, 0.5, 0.0, 1.0, 0.0,
-    #          0.5,  0.5, 0.5, 0.0, 0.0, 1.0,
-    #         -0.5,  0.5, 0.5, 1.0, 1.0, 1.0,
-
-    #         -0.5, -0.5, -0.5, 1.0, 0.0, 0.0,
-    #          0.5, -0.5, -0.5, 0.0, 1.0, 0.0,
-    #          0.5,  0.5, -0.5, 0.0, 0.0, 1.0,
-    #         -0.5,  0.5, -0.5, 1.0, 1.0, 1.0]
-
-    # indices = [0, 1, 2, 2, 3, 0,
-    #             4, 5, 6, 6, 7, 4,
-    #             4, 5, 1, 1, 0, 4,
-    #             6, 7, 3, 3, 2, 6,
-    #             5, 6, 2, 2, 1, 5,
-    #             7, 4, 0, 0, 3, 7]
-
-    # vertices_array = [-a, 0.0, b,
-    #     a, 0.0, b,
-    #     -a, 0.0, -b,
-    #     a, 0.0, -b,
-    #     0.0, b, a,
-    #     0.0, b, -a,
-    #     0.0,-b, a,
-    #     0.0, -b, -a,
-    #     b, a, 0.0,
-    #     -b, a, 0.0,
-    #     b, -a, 0.0,
-    #     -b, -a, 0.0
-    # ]
-
-
-    # indices_array = [0,1,4,
-    #         0,4,9,
-    #         9,4,5,
-    #         4,8,5,
-    #         4,1,8,
-    #         8,1,10,
-    #         8,10,3,
-    #         5,8,3,
-    #         5,3,2,
-    #         2,3,7,
-    #         7,3,10,
-    #         7,10,6,
-    #         7,6,11,
-    #         11,6,0,
-    #         0,6,1,
-    #         6,10,1,
-    #         9,11,0,
-    #         9,2,11,
-    #         9,5,2,
-    #         7,11,2,
-    #         0, 0, 0,
-    #         0, 0, 0,
-    #         0, 0, 0
-    # ]
-    
-    vertices_array = [
-        a, 0, 0,
-        0, -a, 0,
-        -a, 0, 0,
-        0, a, 0,
-        0, 0, a,
-        0, 0, -a,
-    ]
-
-    indices_array = [
-        0, 1, 4,
-        1, 2, 4,
-        2, 3, 4,
-        3, 0, 4,
-        0, 1, 5,
-        1, 2, 5,
-        2, 3, 5,
-        3, 0, 5,
-    ]
 
     indices = np.array(indices_array, dtype=np.uint32)
     tamano = 0
@@ -218,7 +131,7 @@ def main():
     # glClearColor(0.1, 0.1, 0.1, 1)
 
     # Loop until the user closes the window
-    flag = 4
+    flag = 1
 
     while not glfw.window_should_close(window):
         
@@ -232,7 +145,10 @@ def main():
 
             # if flag/flag == 1:
                 vertices_array, indices_array, vertices, indices = get_new_figure(vertices_array, indices_array, vertices, indices, flag)
-                flag += 4
+                if flag < 12:
+                    flag += 1
+                else:
+                    flag += 10
 
         # print(flag)
 
