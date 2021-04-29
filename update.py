@@ -10,9 +10,10 @@ def calculate_new_vector(v1, v2, n_v):
         # print("N_V")
         # print(n_v)
         if(len(vector) == 3):
-            print("HEYYYY")
-            print(v1, v2)
-            print()
+            # print("HEYYYY")
+            # print(v1, v2)
+            # print()
+            pass
         return vector, n_v
     except:
         # print("Exception: ")
@@ -29,19 +30,19 @@ def update_figure(v, indices):
     indices_salida = []
 
     for i in range(len_indices):
-        print(" LEN INDICES")
-        print(len_indices)
-        print(i)
+        # print(" LEN INDICES")
+        # print(len_indices)
+        # print(i)
         
 
         v1_indice = indices[3*i + 0]
         v2_indice = indices[3*i + 1]
         v3_indice = indices[3*i + 2]
 
-        print(v1_indice)
-        print(v2_indice)
-        print(v3_indice)
-        print()
+        # print(v1_indice)
+        # print(v2_indice)
+        # print(v3_indice)
+        # print()
 
         v1 = [v[v1_indice * 3 + 0], v[v1_indice * 3 + 1], v[v1_indice * 3 + 2]]
         v2 = [v[v2_indice * 3 + 0], v[v2_indice * 3 + 1], v[v2_indice * 3 + 2]]
@@ -70,7 +71,7 @@ def update_figure(v, indices):
         indices_salida += [v3_indice, nuevo_vertice - (1), nuevo_vertice - (2)]
         indices_salida += [nuevo_vertice - (1), nuevo_vertice - (2), nuevo_vertice - (3)]
 
-        print(type(indices_salida[-1]))
+        # print(type(indices_salida[-1]))
 
         # print(v1_2)
 
@@ -81,10 +82,11 @@ def update_figure(v, indices):
         # print(v2)
         # print(v3)
 
-    print(v)
+    # print(v)
     print(len(v))
-    print(indices_salida)
+    # print(indices_salida)
     print(len(indices_salida))
+    print()
 
     
     return [v, indices_salida]
