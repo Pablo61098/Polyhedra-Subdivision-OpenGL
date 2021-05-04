@@ -8,7 +8,7 @@ def main():
     if not glfw.init():
         return
     # Create a windowed mode window and its OpenGL context
-    window = glfw.create_window(640, 480, "Hello World", None, None)
+    window = glfw.create_window(640, 480, "Subdivision de Poliedros", None, None)
 
     if not window:
         glfw.terminate()

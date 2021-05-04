@@ -5,7 +5,7 @@ def define_figure(type):
     vertices_array = None
     indices_array = None
     
-    a = 0.5
+    a = 1.0
 
     if type == "tri":
         vertices_array = [-a, -a, 0.0,
