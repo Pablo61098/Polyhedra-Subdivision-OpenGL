@@ -26,7 +26,7 @@ The default figure to show is an octahedron, and it is applying the normalizatio
 
 You can change the figure with the following parameter at the time of execution:
 
-    python3 polyhedra_subdivision.py <b>--poly_type x</b>
+    python3 polyhedra_subdivision.py --poly_type x
     
 With x replace with any of this:
     box
@@ -36,7 +36,21 @@ With x replace with any of this:
 
 Also, you can switch off the approximation to an sphere with the --no_norm parameter, so:
 
-    python3 polyhedra_subdivision.py --poly_type box <b>--no-norm</b>
+    python3 polyhedra_subdivision.py --poly_type box --no-norm
+    
+
+An example of the result is.
+
+![Screenshot_20210504_022502](https://user-images.githubusercontent.com/37944675/121181832-0b5fb200-c828-11eb-9630-bb9ae6e4595f.png)
+
+
+![Screenshot_20210504_022525](https://user-images.githubusercontent.com/37944675/121181848-0ef33900-c828-11eb-92f2-2c61bcae1f2f.png)
+
+
+![Screenshot_20210504_022552](https://user-images.githubusercontent.com/37944675/121181855-11ee2980-c828-11eb-96ae-39a4c36ea8ce.png)
+
+
+
 
 
 
