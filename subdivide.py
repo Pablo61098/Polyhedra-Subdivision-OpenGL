@@ -1,10 +1,11 @@
-def calculate_new_vector(v1, v2, n_v):
+def calculate_new_vector(v1, v2, n_v, norm):
     vector = [(a + b)/2 for a, b in zip(v1, v2)]
     # try in case there is a normal of 0
     try:
-        normal = sum([x**2 for x in vector])**(1/2)
+        if(norm):
+            normal = sum([x**2 for x in vector])**(1/2)
 
-        vector = [x/(normal) for x in vector]
+            vector = [x/(normal) for x in vector]
 
         n_v += 1
         # if(len(vector) == 3):
@@ -13,7 +14,7 @@ def calculate_new_vector(v1, v2, n_v):
     except:
         return [], n_v
 
-def update_figure(v, indices):
+def update_figure(v, indices, norm):
 
     salto = 0
     nuevo_vertice = int(len(v)/3)
@@ -35,9 +36,9 @@ def update_figure(v, indices):
         v3 = [v[v3_indice * 3 + 0], v[v3_indice * 3 + 1], v[v3_indice * 3 + 2]]
         
 
-        v1_2, nuevo_vertice = calculate_new_vector(v1, v2, nuevo_vertice)
-        v2_3, nuevo_vertice = calculate_new_vector(v2, v3, nuevo_vertice)
-        v1_3, nuevo_vertice = calculate_new_vector(v1, v3, nuevo_vertice)
+        v1_2, nuevo_vertice = calculate_new_vector(v1, v2, nuevo_vertice, norm)
+        v2_3, nuevo_vertice = calculate_new_vector(v2, v3, nuevo_vertice, norm)
+        v1_3, nuevo_vertice = calculate_new_vector(v1, v3, nuevo_vertice, norm)
 
         [v.append(a) for a in v1_2]
         [v.append(a) for a in v2_3]

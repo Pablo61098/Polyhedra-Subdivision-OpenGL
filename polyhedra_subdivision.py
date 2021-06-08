@@ -6,6 +6,7 @@ import pyrr
 from subdivide import update_figure
 from figures import define_figure
 import time
+import argparse
 
 start_time = time.time()
 
@@ -40,8 +41,8 @@ void main()
 }
 """
 
-def get_new_figure(vertices_array, indices_array, vertices, indices, flag):
-    vertices_array, indices_array = update_figure(vertices_array, indices_array)
+def get_new_figure(vertices_array, indices_array, vertices, indices, flag, norm):
+    vertices_array, indices_array = update_figure(vertices_array, indices_array, norm)
 
     vertices = np.array(vertices_array, dtype=np.float32)
     indices = np.array(indices_array, dtype=np.uint32)
@@ -65,7 +66,7 @@ def get_new_figure(vertices_array, indices_array, vertices, indices, flag):
 def window_resize(window, width, height):
     glViewport(0, 0, width, height)
 
-def main():
+def main(figure, norm):
    
     
     if not glfw.init():
@@ -84,7 +85,7 @@ def main():
    
     glfw.make_context_current(window)
 
-    vertices_array, indices_array = define_figure("oc")
+    vertices_array, indices_array = define_figure(figure)
     
 
     indices = np.array(indices_array, dtype=np.uint32)
@@ -145,7 +146,7 @@ def main():
                     flag += 40
 
            
-                vertices_array, indices_array, vertices, indices = get_new_figure(vertices_array, indices_array, vertices, indices, flag)
+                vertices_array, indices_array, vertices, indices = get_new_figure(vertices_array, indices_array, vertices, indices, flag, norm)
                 print("\n--")
                 print(iteracion+1)
                 print("--\n")
@@ -175,4 +176,20 @@ def main():
     glfw.terminate()
 
 if __name__ == "__main__":
-    main()
+
+    parser = argparse.ArgumentParser(description = "Polyhedra Subdivision with OpenGL")
+
+    parser.add_argument('--poly_type', dest="figure", required=False)
+    parser.add_argument('--no_norm', action="store_false", required=False)
+
+    args= parser.parse_args()
+
+    figure = args.figure
+    no_norm = args.no_norm
+
+    if(figure == "tri" or  figure == "box" or figure == "ico" or figure == "oc"):
+        pass
+    else:
+        figure = "oc"
+
+    main(figure, no_norm)
