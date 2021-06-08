@@ -41,14 +41,11 @@ Also, you can switch off the approximation to an sphere with the --no_norm param
 
 An example of the result is.
 
-![Screenshot_20210504_022502](https://user-images.githubusercontent.com/37944675/121181832-0b5fb200-c828-11eb-9630-bb9ae6e4595f.png)
+![Screenshot_20210608_070833](https://user-images.githubusercontent.com/37944675/121182223-7b6e3800-c828-11eb-9b5f-783d743e5f3a.png)
 
+![Screenshot_20210608_070839](https://user-images.githubusercontent.com/37944675/121182249-81fcaf80-c828-11eb-8b17-c0612b6e1afd.png)
 
-![Screenshot_20210504_022525](https://user-images.githubusercontent.com/37944675/121181848-0ef33900-c828-11eb-92f2-2c61bcae1f2f.png)
-
-
-![Screenshot_20210504_022552](https://user-images.githubusercontent.com/37944675/121181855-11ee2980-c828-11eb-96ae-39a4c36ea8ce.png)
-
+![Screenshot_20210608_070859](https://user-images.githubusercontent.com/37944675/121182254-82954600-c828-11eb-8ad2-6aaf0395f031.png)
 
 
 
